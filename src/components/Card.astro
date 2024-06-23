@@ -12,7 +12,8 @@ const {
 	date,
 	imagePath,
 	altText,
-	imageClass
+	imageClass,
+	companyWebsite
 } = Astro.props
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}')
 if (!images[imagePath])
@@ -36,7 +37,9 @@ if (!images[imagePath])
 	<div class='flex flex-col gap-y-1.5'>
 		<div class='flex flex-col gap-y-0.5'>
 			<h1 class='text-lg font-medium'>{heading}</h1>
-			<h2 class='text-muted-foreground'>{subheading}</h2>
+			<a href={companyWebsite}>
+				<h2 class='text-muted-foreground'>{subheading}</h2>
+			</a>
 			<h2 class='text-muted-foreground'>{date}</h2>
 		</div>
 		<slot />
